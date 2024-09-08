@@ -4,9 +4,12 @@
     --mid-color:rgb(76,83,89);
     --accent-color:rgb(121, 121, 140);
     --light-color:rgb(227, 228, 228);
+    background:var(--dark-color);
 }
 
 body{
+    width:80%;
+    margin:auto;
     background:var(--bkg-color);
 }
 
