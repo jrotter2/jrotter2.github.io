@@ -1,0 +1,33 @@
+:root{
+    --bkg-color:rgb(46,55,64);
+    --dark-color:rgb(29,32,37);
+    --mid-color:rgb(76,83,89);
+    --accent-color:rgb(121, 121, 140);
+    --light-color:rgb(227, 228, 228);
+}
+
+body{
+    background:var(--bkg-color);
+}
+
+h1 {
+    color:var(--light-color);
+    font-family: "League Spartan", sans-serif;
+    font-size:57pt;
+}
+
+h2 {
+    color:var(--light-color);
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size:27pt;
+}
+
+p {
+    color:var(--light-color);
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size:13pt;
+}
