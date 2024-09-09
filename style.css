@@ -1,16 +1,33 @@
 :root{
-    --bkg-color:rgb(46,55,64);
-    --dark-color:rgb(29,32,37);
-    --mid-color:rgb(76,83,89);
-    --accent-color:rgb(121, 121, 140);
-    --light-color:rgb(227, 228, 228);
-    background:var(--dark-color);
+    --bkg-color:rgb(48, 55, 68);
+    --dark-color:rgb(29,32,37); 
+    --mid-color:rgb(86, 93, 111);
+    --accent-color:rgb(98, 113, 184);
+    --light-color:rgb(251, 251, 255);
+    background:var(--mid-color);
+
+    --blue-cli:rgb(96,175,237);
+    --red-cli:rgb(223,107,115);
+    --yellow-cli:rgb(227,190,126);
+}
+
+input {
+    background:none;
+    color:var(--light-color);
+    border:none;
+    outline:none;
+    width:60%;
+    font-family:'Courier New', Courier, monospace;
+    font-size:12pt;
 }
 
 body{
     width:80%;
     margin:auto;
     background:var(--bkg-color);
+    min-width:550px; 
+    overflow-x:auto;
+    box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 20%);
 }
 
 h1 {
@@ -19,18 +36,47 @@ h1 {
     font-size:57pt;
 }
 
+hr{
+    color:var(--light-color);
+}
+
 h2 {
     color:var(--light-color);
     font-family: "Libre Baskerville", serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size:27pt;
+    font-weight: 100;
+    font-style: normal;
+    font-size:22pt;
 }
 
 p {
     color:var(--light-color);
     font-family: "Libre Baskerville", serif;
-    font-weight: 400;
+    font-weight: 100;
     font-style: normal;
     font-size:13pt;
 }
+
+
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .flex-container > div {
+    font-family:'Courier New', Courier, monospace;
+    font-size:13pt;
+    text-align:center;
+    width: 30%;
+    margin: 3%;
+    text-align: center;
+    line-height: 50%;
+    cursor:pointer;
+    transition: transform 200ms;
+    color:var(--light-color);
+  }
+
+  .flex-container > div:hover {
+    opacity:.75;
+    width: 30%;
+    margin: 3%;
+    transform:scale(1.1);
+  }
