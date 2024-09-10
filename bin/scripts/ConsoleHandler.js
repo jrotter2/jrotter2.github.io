@@ -1,12 +1,35 @@
 
 class ConsoleHandler {
 
-    constructor(console_input, console_body, anim_speed)
+    constructor(main_console, console_input, console_body, anim_speed)
     {
+        window.CONSOLE_main_console = main_console;
         window.CONSOLE_input = console_input;
         window.CONSOLE_console = console_body;
         window.CONSOLE_anim_speed = anim_speed*100;
         window.CONSOLE_interval;
+        window.CONSOLE_current_frame = 0;
+
+        console.log(window.innerWidth);
+        let CONSOLE_WIDTH = 600;
+        let CONSOLE_OFFSET = 300;
+        if(window.innerWidth < CONSOLE_WIDTH)
+        {
+            main_console.style.transform="scale(" + (window.innerWidth/CONSOLE_WIDTH)  + ") translateX(-" + CONSOLE_OFFSET*(1-(window.innerWidth/600)) + "px) translateY(-" + CONSOLE_OFFSET*(1-(window.innerWidth/CONSOLE_WIDTH)) + "px)";
+            main_console.style.margin = "auto";
+        }
+        window.addEventListener("resize", function(event){
+            if(window.innerWidth < CONSOLE_WIDTH)
+            {
+                main_console.style.transform="scale(" + (window.innerWidth/CONSOLE_WIDTH)  + ") translateX(-" + CONSOLE_OFFSET*(1-(window.innerWidth/600)) + "px) translateY(-" + CONSOLE_OFFSET*(1-(window.innerWidth/CONSOLE_WIDTH)) + "px)";
+                main_console.style.margin = "auto";
+            }else{
+                main_console.style.transform="scale(1)";
+                main_console.style.margin = "auto";
+                main_console.style.width = "80%";
+            }
+        },true)
+
         window.CONSOLE_PROGRAMS = {
             "load PROJECTS" : 
             ["  ____   ____    ___       _  _____  ____  _____  ____  ",
@@ -46,10 +69,12 @@ class ConsoleHandler {
             "load ABOUT_ME" : 
             []
         }
+
     }
 
     clear_console(){
         window.CONSOLE_console.innerHTML = "";
+        clearInterval(window.CONSOLE_interval);
     }
 
     new_command(CMD){
@@ -58,6 +83,7 @@ class ConsoleHandler {
     }
 
     load_command(){
+
         this.clear_console();
         let CMD = window.CONSOLE_input.value;
         window.CONSOLE_console_text = window.CONSOLE_PROGRAMS[CMD];
@@ -74,6 +100,7 @@ class ConsoleHandler {
                 window.CONSOLE_console.innerHTML += window.CONSOLE_console_text[window.CONSOLE_current_frame-4] + "<br>";
             }else{
                 clearInterval(window.CONSOLE_interval);
+                return;
             }
             
             window.CONSOLE_current_frame += 1;
