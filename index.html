@@ -5,21 +5,148 @@
         <title>Hi, I'm John!</title>
         <link rel="icon" href="res/icon.png" type="image/x-icon">
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Libre+Baskerville:ital,wght@0,100;0,100;1,100&display=swap" rel="stylesheet">
         <script src="./bin/scripts/TextRoller.js"></script>
         <script src="./bin/scripts/TextBlinker.js"></script>
         <script src="./bin/scripts/ConsoleHandler.js"></script>
+        <script src="./bin/scripts/ExpHandler.js"></script>
     </head>
     <body>
+
+        <div id="exp_window_div" style="width:500px; min-height:500px; max-height:calc(100vh - 100px); overflow-y:scroll; left:calc(50vw - 250px); top:50px; position:fixed; background:var(--mid-color); z-index:100; box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 20%); border:1px solid var(--light-color); border-radius:3px; padding-right:10px;" hidden>
+            <div id="exp_window_holder">
+                <div style=" font-family: 'League Spartan', sans-serif; width:95%; height:1.5em; text-align:left; padding-left:.5em; padding-top:.25em; border-radius:3px; background:var(--accent-color); color:var(--dark-color);"> Experience Viewer 9000</div>
+                <div style="width:5%; height:1.5em;">
+                    <div onclick="my_exp.close()" id="exp_window_closer" style="margin:auto;  margin-top:.125em; cursor:pointer; padding:.25em; border-radius:3px;"><i class="fa-solid fa-x"></i></div>
+                </div>
+            </div>
+            <div id="download_CV_button" style="width:50%; height:1em; padding:.5em; padding-top:.25em; margin:auto; margin-top:.5em; border-radius:5px; background:var(--light-color); color:var(--dark-color); font-family: 'League Spartan', sans-serif; text-align:center; cursor:pointer;">
+                <i class="fa-solid fa-download"></i> Download CV
+            </div>
+            <hr></hr>
+            <div style="width:80%; margin:auto; font-size:2em; text-align:center; font-family: 'League Spartan', sans-serif; color:var(--light-color);">
+                <b>EXPERIENCE</b>
+            </div>
+
+            
+            <div class="exp_viewer_row">
+                <div class="exp_view_col1">
+                    <div style="width:calc(100% - 20px); text-align:right; height:calc(50px + .5em); padding-top:calc(50px - .5em); color:var(--light-color); font-family:  'League Spartan', sans-serif; font-size:2em;">
+                        2024
+                    </div>
+                </div>
+                <div class="exp_view_col2">
+                    <div style="width:5px; height:50px; padding-top:50px; margin:auto; background:var(--light-color);">
+                        <div style="width:15px; height:15px; border-radius:50%; background:white; margin-top:-10px; margin-left:-10px; border:5px solid var(--mid-color);">
+                        </div>
+                    </div>
+                </div>
+                <div class="exp_view_col3">
+                    <div style="margin:5px; width:calc(100% - 10px); height:90px; background:var(--bkg-color); border-radius:5px;">
+
+                    </div>
+                </div>
+            </div>
+            <div class="exp_viewer_row">
+                <div class="exp_view_col1">
+                    <div style="margin:5px; width:calc(100% - 10px); height:90px; background:var(--bkg-color); border-radius:5px;">
+
+                    </div>
+                </div>
+                <div class="exp_view_col2">
+                    <div style="width:5px; height:50px; padding-top:50px; margin:auto; background:var(--light-color);">
+                        <div style="width:15px; height:15px; border-radius:50%; background:white; margin-top:-10px; margin-left:-10px; border:5px solid var(--mid-color);">
+                        </div>
+                    </div>
+                </div>
+                <div class="exp_view_col3">
+                    <div style="width:calc(100% - 20px); margin-left:20px; text-align:left; height:calc(50px + .5em); padding-top:calc(50px - .5em); color:var(--light-color); font-family:  'League Spartan', sans-serif; font-size:2em;">
+                        2023
+                    </div>
+                </div>
+            </div>
+            <div class="exp_viewer_row">
+                <div class="exp_view_col1">
+                    <div style="width:calc(100% - 20px); text-align:right; height:calc(50px + .5em); padding-top:calc(50px - .5em); color:var(--light-color); font-family:  'League Spartan', sans-serif; font-size:2em;">
+                        2022
+                    </div>
+                </div>
+                <div class="exp_view_col2">
+                    <div style="width:5px; height:50px; padding-top:50px; margin:auto; background:var(--light-color);">
+                        <div style="width:15px; height:15px; border-radius:50%; background:white; margin-top:-10px; margin-left:-10px; border:5px solid var(--mid-color);">
+                        </div>
+                    </div>
+                </div>
+                <div class="exp_view_col3">
+                    <div style="margin:5px; width:calc(100% - 10px); height:90px; background:var(--bkg-color); border-radius:5px;">
+
+                    </div>
+                </div>
+            </div>
+            <div class="exp_viewer_row">
+                <div class="exp_view_col1">
+                    <div style="margin:5px; width:calc(100% - 10px); height:90px; background:var(--bkg-color); border-radius:5px;">
+
+                    </div>
+                </div>
+                <div class="exp_view_col2">
+                    <div style="width:5px; height:50px; padding-top:50px; margin:auto; background:var(--light-color);">
+                        <div style="width:15px; height:15px; border-radius:50%; background:white; margin-top:-10px; margin-left:-10px; border:5px solid var(--mid-color);">
+                        </div>
+                    </div>
+                </div>
+                <div class="exp_view_col3">
+                    <div style="width:calc(100% - 20px); margin-left:20px; text-align:left; height:calc(50px + .5em); padding-top:calc(50px - .5em); color:var(--light-color); font-family:  'League Spartan', sans-serif; font-size:2em;">
+                        2021
+                    </div>
+                </div>
+            </div>
+            <div class="exp_viewer_row">
+                <div class="exp_view_col1">
+                    <div style="width:calc(100% - 20px); text-align:right; height:calc(50px + .5em); padding-top:calc(50px - .5em); color:var(--light-color); font-family:  'League Spartan', sans-serif; font-size:2em;">
+                        2020
+                    </div>
+                </div>
+                <div class="exp_view_col2">
+                    <div style="width:5px; height:50px; padding-top:50px; margin:auto; background:var(--light-color);">
+                        <div style="width:15px; height:15px; border-radius:50%; background:white; margin-top:-10px; margin-left:-10px; border:5px solid var(--mid-color);">
+                        </div>
+                    </div>
+                </div>
+                <div class="exp_view_col3">
+                    <div style="margin:5px; width:calc(100% - 10px); height:90px; background:var(--bkg-color); border-radius:5px;">
+
+                    </div>
+                </div>
+            </div>
+            <div class="exp_viewer_row">
+                <div class="exp_view_col1">
+                    <div style="margin:5px; width:calc(100% - 10px); height:90px; background:var(--bkg-color); border-radius:5px;">
+
+                    </div>
+                </div>
+                <div class="exp_view_col2">
+                    <div style="width:5px; height:50px; padding-top:50px; margin:auto; background:var(--light-color);">
+                        <div style="width:15px; height:15px; border-radius:50%; background:white; margin-top:-10px; margin-left:-10px; border:5px solid var(--mid-color);">
+                        </div>
+                    </div>
+                </div>
+                <div class="exp_view_col3">
+                    <div style="width:calc(100% - 20px); margin-left:20px; text-align:left; height:calc(50px + .5em); padding-top:calc(50px - .5em); color:var(--light-color); font-family:  'League Spartan', sans-serif; font-size:2em;">
+                        2019
+                    </div>
+                </div>
+            </div>
+        </div>
         <div style="width:80%; margin:auto;  min-width:520px; padding:15px;">
             <h1 class="text-roller text-roller-remove-on-exit">JOHN ROTTER</h1>
             <h2 id="descriptor" class="text-roller" style="margin-top:-1em; font-family:'Courier New', Courier, monospace; cursor:pointer;" onclick="change_descriptor();">DATA SCIENCE</h2>
             <hr>
             <div class="flex-container">
                 <div onclick="my_console.new_command('load PROJECTS');">> PROJECTS</div>
-                <div onclick="my_console.new_command('load EXPERIENCE');">> EXPERIENCE</div>
+                <div onclick="my_console.new_command('load EXPERIENCE'); my_exp.open();">> EXPERIENCE</div>
                 <div onclick="my_console.new_command('load ABOUT_ME');">> ABOUT ME</div>
             </div>
             <br><br>
@@ -47,6 +174,8 @@
         <script>
              var textRoller = new TextRoller(.5,4);
              var textBlinker = new TextBlinker(2);
+             
+             var my_exp = new ExpHandler(document.getElementById("exp_window_div"), document.getElementById("exp_window_holder"));
 
              var my_console = new ConsoleHandler(document.getElementById("main_console_div"),document.getElementById("console_header"), document.getElementById("console_text"), .75);
              my_console.new_command('load PROJECTS');
@@ -64,7 +193,7 @@
                 //document.getElementById("descriptor").style.opacity = 1;
              }
              setInterval(change_descriptor, 5000);
-        </script>
+          </script>
     </body>
 </html>
 

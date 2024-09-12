@@ -56,6 +56,26 @@ p {
     font-size:13pt;
 }
 
+.exp_viewer_row {
+    display:flex;
+    flex-wrap:nowrap;
+    height:100px;
+}
+
+.exp_view_col1 {
+    width:50%;
+    margin-right:-5%;
+    z-index:101;
+}
+.exp_view_col2 {
+    width:10%;
+    margin-right:-5%;
+    z-index:102;
+}
+.exp_view_col3 {
+    width:50%;
+    z-index:101;
+}
 
 .flex-container {
     display: flex;
@@ -67,7 +87,6 @@ p {
     text-align:center;
     width: 30%;
     margin: 3%;
-    text-align: center;
     line-height: 50%;
     cursor:pointer;
     transition: transform 200ms;
@@ -79,4 +98,26 @@ p {
     width: 30%;
     margin: 3%;
     transform:scale(1.1);
+  }
+
+  #exp_window_div{
+    transition: transform 500ms;
+  }
+
+  #exp_window_holder{
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  #exp_window_holder > div{
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  #exp_window_closer:hover{
+    background:var(--bkg-color);
+    color:var(--light-color);
+  }
+
+  #download_CV_button:hover{
+    opacity:.75;
   }

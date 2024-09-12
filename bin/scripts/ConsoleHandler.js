@@ -10,7 +10,6 @@ class ConsoleHandler {
         window.CONSOLE_interval;
         window.CONSOLE_current_frame = 0;
 
-        console.log(window.innerWidth);
         let CONSOLE_WIDTH = 600;
         let CONSOLE_OFFSET = 300;
         if(window.innerWidth < CONSOLE_WIDTH)
@@ -65,7 +64,9 @@ class ConsoleHandler {
             "    |",
             "    +- <a style='color:var(--yellow-cli); cursor:pointer;'>UI/UX Database Interface</a>"],
             "load EXPERIENCE" : 
-            [],
+            ["LOADING EXPERIENCE VIEWER...",
+            ".",".",".",
+            "LAUNCHING..."],
             "load ABOUT_ME" : 
             []
         }
