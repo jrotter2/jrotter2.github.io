@@ -1,18 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.9bb524bc.css",
-    "main.js": "/static/js/main.a6506bb2.js",
+    "main.css": "/static/css/main.8fcaf581.css",
+    "main.js": "/static/js/main.1ae13f1f.js",
     "static/js/453.9bab876c.chunk.js": "/static/js/453.9bab876c.chunk.js",
+    "static/media/CMSDisplay.png": "/static/media/CMSDisplay.b7d6d88547a0c39dc0a7.png",
+    "static/media/BDTPerformance.png": "/static/media/BDTPerformance.a2d3e38d831694ca22a5.png",
+    "static/media/BDTFigure.png": "/static/media/BDTFigure.5d12b2a989289414a887.png",
+    "static/media/NNFigure.png": "/static/media/NNFigure.ec61254ecec6853e6bac.png",
+    "static/media/NNConfusionFigure.png": "/static/media/NNConfusionFigure.ca751f6ce3742a568e56.png",
     "static/media/MC_paths.png": "/static/media/MC_paths.703a79f731f4f0b932bd.png",
     "static/media/KAN_diagram.png": "/static/media/KAN_diagram.0d21906d8b9a99bb0481.png",
+    "static/media/NN_acc_loss.png": "/static/media/NN_acc_loss.16c7696ff6a6f5c4178a.png",
     "static/media/implied_vol.png": "/static/media/implied_vol.7aef4bef8c20c3ad69db.png",
     "index.html": "/index.html",
-    "main.9bb524bc.css.map": "/static/css/main.9bb524bc.css.map",
-    "main.a6506bb2.js.map": "/static/js/main.a6506bb2.js.map",
+    "main.8fcaf581.css.map": "/static/css/main.8fcaf581.css.map",
+    "main.1ae13f1f.js.map": "/static/js/main.1ae13f1f.js.map",
     "453.9bab876c.chunk.js.map": "/static/js/453.9bab876c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9bb524bc.css",
-    "static/js/main.a6506bb2.js"
+    "static/css/main.8fcaf581.css",
+    "static/js/main.1ae13f1f.js"
   ]
 }
