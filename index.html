@@ -1,201 +1,327 @@
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name = "description" content ="John Rotter - GitHub.io"/>
-        <title>Hi, I'm John!</title>
-        <link rel="icon" href="res/icon.png" type="image/x-icon">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Libre+Baskerville:ital,wght@0,100;0,100;1,100&display=swap" rel="stylesheet">
-        <script src="./bin/scripts/TextRoller.js"></script>
-        <script src="./bin/scripts/TextBlinker.js"></script>
-        <script src="./bin/scripts/ConsoleHandler.js"></script>
-        <script src="./bin/scripts/ExpHandler.js"></script>
-    </head>
-    <body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>John Rotter</title>
+  <meta name="description" content="John Rotter: engineer at Chalk, an early-stage AI startup. Physics Ph.D. who builds things, ships fast, and never stops learning." />
+  <meta name="theme-color" content="#06080c" />
+  <meta property="og:title" content="John Rotter" />
+  <meta property="og:description" content="Physics + software engineering. Building product at an early-stage startup." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-        <div id="exp_window_div" style="width:500px; min-height:500px; max-height:calc(100vh - 100px); overflow-y:scroll; left:calc(50vw - 250px); top:50px; position:fixed; background:var(--mid-color); z-index:100; box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 60%); border:1px solid var(--light-color); border-radius:3px; padding-right:10px;" hidden>
-            <div id="exp_window_holder">
-                <div style=" font-family: 'League Spartan', sans-serif; width:95%; height:1.5em; text-align:left; padding-left:.5em; padding-top:.25em; border-radius:3px; background:var(--accent-color); color:var(--dark-color);"> Experience Viewer 9000</div>
-                <div style="width:5%; height:1.5em;">
-                    <div onclick="my_exp.close()" id="exp_window_closer" style="margin:auto;  margin-top:.125em; cursor:pointer; padding:.25em; border-radius:3px;"><i class="fa-solid fa-x"></i></div>
-                </div>
-            </div>
-            <div id="download_CV_button" style="width:50%; height:1em; padding:.5em; padding-top:.25em; margin:auto; margin-top:.5em; border-radius:5px; background:var(--light-color); color:var(--dark-color); font-family: 'League Spartan', sans-serif; text-align:center; cursor:pointer;">
-                <i class="fa-solid fa-download"></i> Download CV
-            </div>
-            <hr></hr>
-            <div style="width:80%; margin:auto; font-size:2em; text-align:center; font-family: 'League Spartan', sans-serif; color:var(--light-color);">
-                <b>EXPERIENCE</b>
-            </div>
+  <!-- ===== Launch sequence (intro) ===== -->
+  <div id="launch" aria-hidden="true">
+    <pre id="launch-log"></pre>
+    <pre id="launch-rocket"></pre>
+    <button id="launch-skip" type="button">skip &rarr;</button>
+  </div>
 
-            
-            <div class="exp_viewer_row">
-                <div class="exp_view_col1">
-                    <div style="width:calc(100% - 20px); text-align:right; height:calc(50px + .5em); padding-top:calc(50px - .5em); color:var(--light-color); font-family:  'League Spartan', sans-serif; font-size:2em;">
-                        2024
-                    </div>
-                </div>
-                <div class="exp_view_col2">
-                    <div style="width:5px; height:50px; padding-top:50px; margin:auto; background:var(--light-color);">
-                        <div style="width:15px; height:15px; border-radius:50%; background:white; margin-top:-10px; margin-left:-10px; border:5px solid var(--mid-color);">
-                        </div>
-                    </div>
-                </div>
-                <div class="exp_view_col3">
-                    <div style="margin:5px; width:calc(100% - 10px); height:90px; background:var(--bkg-color); border-radius:5px;">
+  <canvas id="stars" aria-hidden="true"></canvas>
 
-                    </div>
-                </div>
-            </div>
-            <div class="exp_viewer_row">
-                <div class="exp_view_col1">
-                    <div style="margin:5px; width:calc(100% - 10px); height:90px; background:var(--bkg-color); border-radius:5px;">
+  <!-- ===== Nav ===== -->
+  <header class="nav">
+    <a class="nav-logo" href="#top">jr<span class="accent">@</span>orbit<span class="dim">:~$</span><span class="cursor">_</span></a>
+    <nav class="nav-links">
+      <a href="#mission">mission</a>
+      <a href="#trajectory">trajectory</a>
+      <a href="#payloads">payloads</a>
+      <a href="#publications">papers</a>
+      <a href="#terminal">terminal</a>
+      <a href="#contact" class="nav-cta">contact</a>
+    </nav>
+  </header>
 
-                    </div>
-                </div>
-                <div class="exp_view_col2">
-                    <div style="width:5px; height:50px; padding-top:50px; margin:auto; background:var(--light-color);">
-                        <div style="width:15px; height:15px; border-radius:50%; background:white; margin-top:-10px; margin-left:-10px; border:5px solid var(--mid-color);">
-                        </div>
-                    </div>
-                </div>
-                <div class="exp_view_col3">
-                    <div style="width:calc(100% - 20px); margin-left:20px; text-align:left; height:calc(50px + .5em); padding-top:calc(50px - .5em); color:var(--light-color); font-family:  'League Spartan', sans-serif; font-size:2em;">
-                        2023
-                    </div>
-                </div>
-            </div>
-            <div class="exp_viewer_row">
-                <div class="exp_view_col1">
-                    <div style="width:calc(100% - 20px); text-align:right; height:calc(50px + .5em); padding-top:calc(50px - .5em); color:var(--light-color); font-family:  'League Spartan', sans-serif; font-size:2em;">
-                        2022
-                    </div>
-                </div>
-                <div class="exp_view_col2">
-                    <div style="width:5px; height:50px; padding-top:50px; margin:auto; background:var(--light-color);">
-                        <div style="width:15px; height:15px; border-radius:50%; background:white; margin-top:-10px; margin-left:-10px; border:5px solid var(--mid-color);">
-                        </div>
-                    </div>
-                </div>
-                <div class="exp_view_col3">
-                    <div style="margin:5px; width:calc(100% - 10px); height:90px; background:var(--bkg-color); border-radius:5px;">
+  <main id="top">
 
-                    </div>
-                </div>
-            </div>
-            <div class="exp_viewer_row">
-                <div class="exp_view_col1">
-                    <div style="margin:5px; width:calc(100% - 10px); height:90px; background:var(--bkg-color); border-radius:5px;">
-
-                    </div>
-                </div>
-                <div class="exp_view_col2">
-                    <div style="width:5px; height:50px; padding-top:50px; margin:auto; background:var(--light-color);">
-                        <div style="width:15px; height:15px; border-radius:50%; background:white; margin-top:-10px; margin-left:-10px; border:5px solid var(--mid-color);">
-                        </div>
-                    </div>
-                </div>
-                <div class="exp_view_col3">
-                    <div style="width:calc(100% - 20px); margin-left:20px; text-align:left; height:calc(50px + .5em); padding-top:calc(50px - .5em); color:var(--light-color); font-family:  'League Spartan', sans-serif; font-size:2em;">
-                        2021
-                    </div>
-                </div>
-            </div>
-            <div class="exp_viewer_row">
-                <div class="exp_view_col1">
-                    <div style="width:calc(100% - 20px); text-align:right; height:calc(50px + .5em); padding-top:calc(50px - .5em); color:var(--light-color); font-family:  'League Spartan', sans-serif; font-size:2em;">
-                        2020
-                    </div>
-                </div>
-                <div class="exp_view_col2">
-                    <div style="width:5px; height:50px; padding-top:50px; margin:auto; background:var(--light-color);">
-                        <div style="width:15px; height:15px; border-radius:50%; background:white; margin-top:-10px; margin-left:-10px; border:5px solid var(--mid-color);">
-                        </div>
-                    </div>
-                </div>
-                <div class="exp_view_col3">
-                    <div style="margin:5px; width:calc(100% - 10px); height:90px; background:var(--bkg-color); border-radius:5px;">
-
-                    </div>
-                </div>
-            </div>
-            <div class="exp_viewer_row">
-                <div class="exp_view_col1">
-                    <div style="margin:5px; width:calc(100% - 10px); height:90px; background:var(--bkg-color); border-radius:5px;">
-
-                    </div>
-                </div>
-                <div class="exp_view_col2">
-                    <div style="width:5px; height:50px; padding-top:50px; margin:auto; background:var(--light-color);">
-                        <div style="width:15px; height:15px; border-radius:50%; background:white; margin-top:-10px; margin-left:-10px; border:5px solid var(--mid-color);">
-                        </div>
-                    </div>
-                </div>
-                <div class="exp_view_col3">
-                    <div style="width:calc(100% - 20px); margin-left:20px; text-align:left; height:calc(50px + .5em); padding-top:calc(50px - .5em); color:var(--light-color); font-family:  'League Spartan', sans-serif; font-size:2em;">
-                        2019
-                    </div>
-                </div>
-            </div>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> ENGINEER, FORWARD DEPLOYED @ CHALK</div>
+        <h1>John Rotter</h1>
+        <p class="hero-roller">I build <span id="roller" class="accent">products people actually use</span><span class="cursor">_</span></p>
+        <p class="hero-sub">
+          Physics + software engineering. I like to understand how something works from first
+          principles, then build it, ship it, and make it better. Right now I'm an engineer
+          at Chalk, an early-stage startup, writing and shipping the code that becomes the product.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#mission">Current mission &rarr;</a>
+          <a class="btn btn-ghost" href="#contact">Open a channel</a>
         </div>
-        <div style="width:80%; margin:auto;  min-width:520px; padding:15px;">
-            <h1 class="text-roller text-roller-remove-on-exit">JOHN ROTTER</h1>
-            <h2 id="descriptor" class="text-roller" style="margin-top:-1em; font-family:'Courier New', Courier, monospace; cursor:pointer;" onclick="change_descriptor();">DATA SCIENCE</h2>
-            <hr>
-            <div class="flex-container">
-                <div onclick="my_console.new_command('load PROJECTS');">> PROJECTS</div>
-                <div onclick="my_console.new_command('load EXPERIENCE'); my_exp.open();">> EXPERIENCE</div>
-                <div onclick="my_console.new_command('load ABOUT_ME');">> ABOUT ME</div>
-            </div>
-            <br><br>
-            <div style="width:100%;">
-                <div id="main_console_div" style="width:80%; margin:auto; box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 20%);">
-                    <div style="width:100%; margin:auto; border-radius:3px 3px 0px 0px; background:rgb(35, 35, 42); color:var(--light-color); padding:1em; padding-top:.5em; padding-bottom:.5em; font-family:'Courier New', Courier, monospace; ">
-                        CONSOLE
-                    </div>
-                    <div style="width:100%; margin:auto; border-radius:0px 0px 3px 3px; background:rgb(20, 20, 24); color:var(--light-color); padding:1em; padding-top:.5em; font-family:'Courier New', Courier, monospace; min-height:500px;">
-                        <a> guest@jrotter2.github.io ~ > </a> <input type="text" id="console_header" placeholder="TYPE CMD HERE" oninput="my_console.load_command();"></input>
-                        <br>
-                        <p id="console_text" style="font-family:'Courier New', Courier, monospace; font-size:9pt; white-space:pre;overflow-x:auto;">
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <br><br>
-            <hr>
-            <div style="color:var(--light-color); opacity:.5; text-align:center; font-family: 'Libre Baskerville', serif;">
-                <br>
-                Designed and developed by John Rotter <br>
-                johnrotter.physics@gmail.com<br>
-            </div>
+      </div>
+
+      <figure class="hero-orbit">
+        <div class="hud hud-tl">OBJ <span class="accent">JR-1</span><br>ORBIT <span id="hud-orbit">LEO</span></div>
+        <div class="hud hud-tr">UTC <span id="hud-clock">--:--:--</span><br>STATUS <span class="ok">NOMINAL</span></div>
+        <pre id="orbit" aria-label="ASCII animation of a planet with an orbiting moon and satellite"></pre>
+        <div class="hud hud-bl">ALT <span id="hud-alt">408</span> km</div>
+        <div class="hud hud-br">VEL <span id="hud-vel">7.66</span> km/s</div>
+      </figure>
+    </section>
+
+    <!-- ===== Telemetry ===== -->
+    <section class="telemetry reveal">
+      <div class="stat"><div class="stat-v">Ph.D.</div><div class="stat-l">Physics, Rice University</div></div>
+      <div class="stat"><div class="stat-v">6<span class="unit">yrs</span></div><div class="stat-l">Shipping production code</div></div>
+      <div class="stat"><div class="stat-v">&lt;25<span class="unit">ns</span></div><div class="stat-l">High-performance systems on FPGAs</div></div>
+    </section>
+
+    <!-- ===== Mission: Chalk ===== -->
+    <section id="mission" class="section reveal">
+      <div class="section-head">
+        <span class="section-tag">01 // CURRENT MISSION</span>
+        <h2>Building the product at <span class="accent">Chalk</span></h2>
+        <p class="lede">
+          <a href="https://chalk.ai" target="_blank" rel="noopener">Chalk</a> is an early-stage startup building
+          the platform for production AI. I manage the forward deployed engineers in our New York office, and at a
+          company this size that doesn't mean stepping away from the code. We're not just helping people use the
+          product. We're building it: writing the code, shipping it, and watching it land with the teams who depend on it.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">&#x2197;</div>
+          <h3>Ship product code</h3>
+          <p>I write and ship code that goes into the product itself. New features, integrations, fixes, from first commit to running in production.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">&#x25CE;</div>
+          <h3>Build with users</h3>
+          <p>I work directly with the teams using Chalk, so I see exactly what they need, then go build it with the rest of our team.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">&#x21BA;</div>
+          <h3>Iterate fast</h3>
+          <p>Ship it, see how it does, make it better. At an early-stage startup the loop from idea to customer is days, not quarters.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">&#x26A1;</div>
+          <h3>Own the outcome</h3>
+          <p>Small team, high trust, no handoffs. I'm happiest picking up the ambiguous problem and running with it until it works.</p>
+        </article>
+      </div>
+
+      <p class="why-early">
+        <span class="accent">Why early-stage?</span> Because this is where the product is still being invented,
+        and every engineer gets to shape it. There's no better place to learn fast and build things that matter.
+      </p>
+    </section>
+
+    <!-- ===== Builder ===== -->
+    <section id="builder" class="section split reveal">
+      <div>
+        <span class="section-tag">02 // HOW I WORK</span>
+        <h2>Understand it.<br><span class="accent">Then build it.</span></h2>
+      </div>
+      <div class="prose">
+        <p>
+          Physics taught me to understand a system from first principles. Software engineering lets me build it.
+          I love the work that needs both: knowing why something behaves the way it does, then writing the
+          software that puts that to use. In grad school that meant designing ML models small and fast enough
+          to run on FPGA hardware in under 25 nanoseconds. On the side it meant years of full-stack work
+          shipping real products.
+        </p>
+        <p>
+          The common thread is the part I love most: taking something vague and hard, getting it into
+          people's hands fast, and iterating until it really works. That's what pulled me from physics into
+          startups, and it's what keeps pulling me toward founding something of my own.
+        </p>
+        <div class="loop" aria-label="build, ship, learn, iterate, repeat">
+          <div class="loop-step"><span class="loop-n">01</span>build</div>
+          <div class="loop-step"><span class="loop-n">02</span>ship</div>
+          <div class="loop-step"><span class="loop-n">03</span>learn</div>
+          <div class="loop-step"><span class="loop-n">04</span>iterate</div>
+          <div class="loop-repeat" title="repeat">&#x21BB;</div>
         </div>
+      </div>
+    </section>
 
-        <script>
-             var textRoller = new TextRoller(.5,4);
-             var textBlinker = new TextBlinker(2);
-             
-             var my_exp = new ExpHandler(document.getElementById("exp_window_div"), document.getElementById("exp_window_holder"));
+    <section class="section principles reveal">
+      <article class="principle">
+        <span class="principle-n">01</span>
+        <h3>Build things</h3>
+        <p>I'd rather build the tool than wait for one. Prototypes beat plans, and working software beats both.</p>
+      </article>
+      <article class="principle">
+        <span class="principle-n">02</span>
+        <h3>Collaborate</h3>
+        <p>The best things I've built came out of tight teams: physicists, engineers, customers. I like working in the same room as the problem.</p>
+      </article>
+      <article class="principle">
+        <span class="principle-n">03</span>
+        <h3>Always be learning</h3>
+        <p>From quantum mechanics to distributed systems, I'm happiest at the edge of what I know. Every project should teach me something new.</p>
+      </article>
+    </section>
 
-             var my_console = new ConsoleHandler(document.getElementById("main_console_div"),document.getElementById("console_header"), document.getElementById("console_text"), .75);
-             my_console.new_command('load PROJECTS');
-             
-             textRoller.load();
-             textBlinker.load();
+    <!-- ===== Trajectory ===== -->
+    <section id="trajectory" class="section reveal">
+      <div class="section-head">
+        <span class="section-tag">03 // TRAJECTORY</span>
+        <h2>Flight log</h2>
+      </div>
 
-             function change_descriptor() {
-                if(window.ROLLER_current_frame > 0)return;
+      <ol class="timeline">
+        <li class="tl-item tl-current">
+          <div class="tl-when">Aug 2026 &mdash; now</div>
+          <div class="tl-body">
+            <h3>Forward Deployed Engineering Manager <span class="at">@ Chalk &middot; New York</span></h3>
+            <p>Promoted to lead all forward deployed engineers in the New York office. Still shipping code, now also helping the team build, ship, and grow faster together.</p>
+            <div class="tags"><span>Leadership</span><span>Product engineering</span><span>New York</span></div>
+          </div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-when">2025 &mdash; Aug 2026</div>
+          <div class="tl-body">
+            <h3>Forward Deployed Engineer <span class="at">@ Chalk</span></h3>
+            <p>Building and shipping the product at an early-stage AI startup. I write product code, take it to production, and iterate on it with the teams who use it every day.</p>
+            <div class="tags"><span>Python</span><span>ML infra</span><span>Real-time systems</span><span>Product engineering</span></div>
+          </div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-when">2021 &mdash; 2024</div>
+          <div class="tl-body">
+            <h3>Ph.D. in Physics <span class="at">@ Rice University</span></h3>
+            <p>Particle physics meets software. Built ML systems end to end, from data pipelines to models designed for FPGA hardware, plus classifiers and anomaly detection on large-scale experimental data.</p>
+            <div class="tags"><span>Python</span><span>C++</span><span>TensorFlow</span><span>BDTs</span><span>Statistics</span></div>
+          </div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-when">2020 &mdash; 2024</div>
+          <div class="tl-body">
+            <h3>Full-Stack Developer <span class="at">@ PureNerd LLC</span></h3>
+            <p>Designed and built the frontend and backend, plus product-creation tooling on top of the Shopify and Printify APIs.</p>
+            <div class="tags"><span>JavaScript</span><span>PHP</span><span>Java</span><span>APIs</span></div>
+          </div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-when">2019 &mdash; 2021</div>
+          <div class="tl-body">
+            <h3>Graduate Researcher &amp; TA <span class="at">@ University of Florida</span></h3>
+            <p>Built ML for real-time particle detection and taught physics labs in electricity, magnetism, circuits, and optics.</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-when">2019</div>
+          <div class="tl-body">
+            <h3>B.S. Physics &amp; B.S. Mathematics <span class="at">@ Norwich University</span></h3>
+            <p>Summa cum laude, both degrees.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
 
-                document.getElementById("descriptor").style.opacity = 0;
-                let descriptors = ["DATA SCIENCE", "DATA ANALYSIS", "STATISTICS", "MACHINE LEARNING", "PYTHON PROGRAMMING", "C++ PROGRAMMING"];
-                document.getElementById("descriptor").innerHTML = descriptors[Math.floor(Math.random() * descriptors.length)];
-                textRoller.reload();
-                //document.getElementById("descriptor").style.opacity = 1;
-             }
-             setInterval(change_descriptor, 5000);
-          </script>
-    </body>
+    <!-- ===== Payloads ===== -->
+    <section id="payloads" class="section reveal">
+      <div class="section-head">
+        <span class="section-tag">04 // PAYLOADS</span>
+        <h2>Things I've built</h2>
+        <p class="lede">Physics on one side, software on the other. My favorite projects need both.</p>
+      </div>
+
+      <div class="projects">
+        <article class="project">
+          <div class="project-top"><span class="project-id">PL-01</span><span class="project-kind">ML &middot; HARDWARE</span></div>
+          <h3>Nanosecond ML on FPGAs</h3>
+          <p>Led a small team building a boosted decision tree that estimates particle momentum in real time. It had to be compact enough for FPGA hardware and make each decision in under 25 ns.</p>
+          <div class="tags"><span>C++</span><span>Python</span><span>BDT</span><span>FPGA</span></div>
+        </article>
+        <article class="project">
+          <div class="project-top"><span class="project-id">PL-02</span><span class="project-kind">PRODUCT</span></div>
+          <h3>Commerce Automation</h3>
+          <p>Full-stack product pipelines for an online store: a custom frontend and backend wired into the Shopify and Printify APIs, shipped and maintained over four years.</p>
+          <div class="tags"><span>JavaScript</span><span>PHP</span><span>Java</span><span>APIs</span></div>
+        </article>
+        <article class="project">
+          <div class="project-top"><span class="project-id">PL-03</span><span class="project-kind">DEEP LEARNING</span></div>
+          <h3>Signal vs. Background Classifier</h3>
+          <p>Designed, trained, and evaluated a neural network that pulls rare Higgs boson signals out of overwhelming background in collision data.</p>
+          <div class="tags"><span>Keras</span><span>TensorFlow</span><span>Classification</span></div>
+        </article>
+        <article class="project">
+          <div class="project-top"><span class="project-id">PL-04</span><span class="project-kind">DATA QUALITY</span></div>
+          <h3>Anomaly Detection</h3>
+          <p>Tools that flag anomalous data before it reaches downstream analyses, so bad runs get caught early instead of at the end.</p>
+          <div class="tags"><span>Python</span><span>Monitoring</span><span>ML</span></div>
+        </article>
+        <article class="project">
+          <div class="project-top"><span class="project-id">PL-05</span><span class="project-kind">THESIS</span></div>
+          <h3>Measuring the Higgs Width</h3>
+          <p>My Ph.D. thesis: a statistical analysis of large-scale collision data to constrain how long the Higgs boson lives. Where the physics and the code had to agree.</p>
+          <div class="tags"><span>Statistics</span><span>Large-scale data</span><span>C++</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Publications ===== -->
+    <section id="publications" class="section reveal">
+      <div class="section-head">
+        <span class="section-tag">05 // PUBLICATIONS</span>
+        <h2>Published work</h2>
+      </div>
+
+      <ol class="pubs">
+        <li class="pub pub-featured">
+          <div class="pub-meta"><span class="pub-badge">MAJOR PERSONAL CONTRIBUTION</span><span class="pub-year">2026</span></div>
+          <h3><a href="https://doi.org/10.1103/rny9-zby1" target="_blank" rel="noopener">Measurement of the Higgs boson total decay width using the H&nbsp;&rarr;&nbsp;WW&nbsp;&rarr;&nbsp;e&nu;&mu;&nu; decay channel in proton-proton collisions at &radic;s&nbsp;=&nbsp;13&nbsp;TeV</a></h3>
+          <p class="pub-authors">CMS Collaboration</p>
+          <p class="pub-venue"><em>Physical Review D</em> <b>113</b>, 092014 (2026) &middot; <a href="https://doi.org/10.1103/rny9-zby1" target="_blank" rel="noopener">doi:10.1103/rny9-zby1</a></p>
+        </li>
+        <li class="pub">
+          <div class="pub-meta"><span class="pub-badge pub-badge-dim">ASTROPHYSICS</span><span class="pub-year">2017</span></div>
+          <h3><a href="https://doi.org/10.3847/1538-4357/aa93ea" target="_blank" rel="noopener">An X-Ray Study of Two B+B Binaries: AH Cep and CW Cep</a></h3>
+          <p class="pub-authors">Ignace, R., Hole, K. T., Oskinova, L. M., <b>Rotter, J. P.</b></p>
+          <p class="pub-venue"><em>The Astrophysical Journal</em> <b>850</b>, 82 (2017) &middot; <a href="https://doi.org/10.3847/1538-4357/aa93ea" target="_blank" rel="noopener">doi:10.3847/1538-4357/aa93ea</a></p>
+        </li>
+        <li class="pub">
+          <div class="pub-meta"><span class="pub-badge pub-badge-dim">AUTHORSHIP</span><span class="pub-year">2021 &mdash; 2026</span></div>
+          <h3><a href="https://inspirehep.net/authors/1796344" target="_blank" rel="noopener">CMS Collaboration author</a></h3>
+          <p class="pub-venue">Full publication list on <a href="https://inspirehep.net/authors/1796344" target="_blank" rel="noopener">INSPIRE-HEP &nearr;</a></p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== Terminal ===== -->
+    <section id="terminal" class="section reveal">
+      <div class="section-head">
+        <span class="section-tag">06 // GROUND CONTROL</span>
+        <h2>Talk to the console</h2>
+        <p class="lede">For the curious. Type <code>help</code> to see what it can do.</p>
+      </div>
+      <div class="term">
+        <div class="term-bar"><span></span><span></span><span></span><div class="term-title">guest@jrotter2.github.io</div></div>
+        <div class="term-body" id="term-body">
+          <div id="term-out"></div>
+          <label class="term-line"><span class="prompt">guest@orbit:~$</span><input id="term-in" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal input" /></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact" class="section contact reveal">
+      <span class="section-tag">07 // OPEN A CHANNEL</span>
+      <h2>Let's build something.</h2>
+      <p class="lede">Building something, want to collaborate, or just want to trade notes on what you're learning? My inbox is open.</p>
+      <div class="hero-ctas center">
+        <a class="btn btn-primary" href="mailto:johnrotter.physics@gmail.com">johnrotter.physics@gmail.com</a>
+        <a class="btn btn-ghost" href="https://github.com/jrotter2" target="_blank" rel="noopener">GitHub &nearr;</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>&copy; <span id="year">2026</span> John Rotter</span>
+    <span class="dim">v2.0 &middot; <button id="replay" type="button">replay launch</button></span>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
 </html>
-
-
